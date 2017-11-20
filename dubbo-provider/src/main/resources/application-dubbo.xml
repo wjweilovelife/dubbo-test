@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方服务应用名称-->
+    <dubbo:application name="dubbo-provider"/>
+    <!-- 注册地址：采用zookeeper-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <!-- 使用dubbo作为协议-->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <!-- 暴露服务接口-->
+    <dubbo:service interface="com.pactera.service.UserService" ref="UserServiceImpl"/>
+    <!-- 接口实现类-->
+    <bean id="UserServiceImpl" class="com.pactera.serviceImpl.UserServiceImpl"/>
+
+</beans>
